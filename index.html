@@ -1,4 +1,6 @@
-<html lang="ko"><head>
+<!DOCTYPE html>
+<html lang="ko">
+<head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>네이버 사전 - 강고유정</title>
@@ -83,6 +85,142 @@
             padding-bottom: 10px;
             border-bottom: 2px solid #e0e0e0;
         }
+        .name-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+        .image-btn {
+            background-color: #03c75a;
+            color: white;
+            border: none;
+            padding: 5px 15px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 13px;
+        }
+        .image-btn:hover {
+            background-color: #02b350;
+        }
+        
+        /* 모달 스타일 */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.9);
+            overflow: auto;
+        }
+        .modal-content {
+            position: relative;
+            margin: 50px auto;
+            padding: 20px;
+            width: 90%;
+            max-width: 900px;
+        }
+        .close-modal {
+            position: absolute;
+            top: 10px;
+            right: 25px;
+            color: #fff;
+            font-size: 40px;
+            font-weight: bold;
+            cursor: pointer;
+            z-index: 1001;
+        }
+        .close-modal:hover {
+            color: #03c75a;
+        }
+        .modal-title {
+            color: #fff;
+            font-size: 24px;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        .image-gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 15px;
+            padding: 20px 0;
+        }
+        .gallery-item {
+            position: relative;
+            overflow: hidden;
+            border-radius: 8px;
+            cursor: pointer;
+        }
+        .gallery-item img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            transition: transform 0.3s;
+        }
+        .gallery-item:hover img {
+            transform: scale(1.1);
+        }
+        
+        /* 큰 이미지 뷰어 */
+        .image-viewer {
+            display: none;
+            position: fixed;
+            z-index: 1001;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.95);
+        }
+        .viewer-content {
+            position: relative;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 50px;
+        }
+        .viewer-content img {
+            max-width: 90%;
+            max-height: 90%;
+            object-fit: contain;
+        }
+        .close-viewer {
+            position: absolute;
+            top: 20px;
+            right: 40px;
+            color: #fff;
+            font-size: 50px;
+            font-weight: bold;
+            cursor: pointer;
+            z-index: 1002;
+        }
+        .close-viewer:hover {
+            color: #03c75a;
+        }
+        .nav-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #fff;
+            font-size: 40px;
+            font-weight: bold;
+            cursor: pointer;
+            padding: 20px;
+            user-select: none;
+        }
+        .nav-btn:hover {
+            color: #03c75a;
+        }
+        .prev-btn {
+            left: 20px;
+        }
+        .next-btn {
+            right: 20px;
+        }
     </style>
 </head>
 <body>
@@ -100,13 +238,16 @@
             <span class="word-class">명사</span>
             <span class="stars">★★★</span>
             <div class="definition-text">
-                <span class="definition-num">1.</span>강준수, 고재성, 유시연, 정민수, 강준수, 홍민준, 김규원, 김민석, 이예준, 신승우, 노지원, 이우현</div>
+                <span class="definition-num">1.</span>강준수, 고재성, 유시연, 정민수, 강준수, 홍민준, 김규원, 김민석, 이예준, 신승우, 노지원, 이우현
+            </div>
             <div class="definition-text">
                 <span class="definition-num">2.</span> 
-                <span class="word-class">속담</span>한 남자 백일 못간다.</div>
+                <span class="word-class">속담</span>한 남자 백일 못간다.
+            </div>
             <div class="definition-text">
                 <span class="definition-num">3.</span> 
-                <span class="word-class">명사</span>김하연의 남자들</div>
+                <span class="word-class">명사</span>김하연의 남자들
+            </div>
             <div class="dict-source">표준국어대사전</div>
         </div>
 
@@ -114,29 +255,35 @@
             <span class="word-class">강정강홍이신</span>
             <span class="stars">★★★</span>
             <div class="definition-text">
-                <span class="definition-num">1.</span>김하연 남친</div>
+                <span class="definition-num">1.</span>김하연 남친
+            </div>
             <div class="definition-text">
-                <span class="definition-num">2.</span>강준수, 정민수, 강준수, 홍민준, 이예준, 신승우</div>
+                <span class="definition-num">2.</span>강준수, 정민수, 강준수, 홍민준, 이예준, 신승우
+            </div>
             <div class="definition-text">
                 <span class="definition-num">3.</span> 
-                <span class="word-class">특징</span>정상, 겜충, 정상, 성범죄자, 양다리, 바보</div>
+                <span class="word-class">특징</span>정상, 겜충, 정상, 성범죄자, 양다리, 바보
+            </div>
             <div class="dict-source">지훈 한국어대사전</div>
         </div>
 
         <div class="definition">
             <span class="word-class">명사</span>
             <div class="definition-text">
-                <span class="definition-num">1.</span>&lt;이달의 남친은?&gt; 출연자</div>
+                <span class="definition-num">1.</span>&lt;이달의 남친은?&gt; 출연자
+            </div>
             <div class="definition-text">
-                <span class="definition-num">2.</span>남미새</div>
+                <span class="definition-num">2.</span>남미새
             </div>
             <div class="dict-source">우리말샘</div>
         </div>
 
         <div class="section-title">관련 어휘</div>
+        
         <div class="definition">
-            <div class="definition-text">
-                강준수
+            <div class="name-header">
+                <div class="definition-text"><strong>강준수</strong></div>
+                <button class="image-btn" onclick="openGallery('강준수')">이미지 보기</button>
             </div>
             <div class="definition-text">
                 김하연 첫 남친으로 알려졌다. 꼴초 이슈가 있었다. 다시보니 가장 정상인 사람중 하나다.
@@ -144,101 +291,266 @@
         </div>
         
         <div class="definition">
-            <div class="definition-text">
-                고재성
+            <div class="name-header">
+                <div class="definition-text"><strong>고재성</strong></div>
+                <button class="image-btn" onclick="openGallery('고재성')">이미지 보기</button>
             </div>
             <div class="definition-text">
                 김하연 짝남이다.
             </div>
         </div>
         
-        <div class="definition">    
-            <div class="definition-text">
-                유시연
+        <div class="definition">
+            <div class="name-header">
+                <div class="definition-text"><strong>유시연</strong></div>
+                <button class="image-btn" onclick="openGallery('유시연')">이미지 보기</button>
             </div>
             <div class="definition-text">
                 김하연 두번째 짝남이다.
             </div>
         </div>
         
-        <div class="definition">    
-            <div class="definition-text">
-                정민수
+        <div class="definition">
+            <div class="name-header">
+                <div class="definition-text"><strong>정민수</strong></div>
+                <button class="image-btn" onclick="openGallery('정민수')">이미지 보기</button>
             </div>
             <div class="definition-text">
                 겜충이다. 단지 서툴렀을 뿐, 귀엽다.
             </div>    
         </div>
 
-        <div class="definition">    
-            <div class="definition-text">
-                홍민준
+        <div class="definition">
+            <div class="name-header">
+                <div class="definition-text"><strong>홍민준</strong></div>
+                <button class="image-btn" onclick="openGallery('홍민준')">이미지 보기</button>
             </div>
             <div class="definition-text">
                 김하연 연애사에 한 획을 그은 인물이다. 위험하다. 진짜로. 고딩엄빠에 출연할 뻔했다.
             </div>    
         </div>
 
-        <div class="definition">    
-            <div class="definition-text">
-                김규원
+        <div class="definition">
+            <div class="name-header">
+                <div class="definition-text"><strong>김규원</strong></div>
+                <button class="image-btn" onclick="openGallery('김규원')">이미지 보기</button>
             </div>
             <div class="definition-text">
                 김하연의 세번째 짝남이다.
             </div>    
         </div>
 
-        <div class="definition">    
-            <div class="definition-text">
-                김민석
+        <div class="definition">
+            <div class="name-header">
+                <div class="definition-text"><strong>김민석</strong></div>
+                <button class="image-btn" onclick="openGallery('김민석')">이미지 보기</button>
             </div>
             <div class="definition-text">
                 김하연의 네번째 짝남이다.
             </div>    
         </div>
 
-        <div class="definition">    
-            <div class="definition-text">
-                이예준
+        <div class="definition">
+            <div class="name-header">
+                <div class="definition-text"><strong>이예준</strong></div>
+                <button class="image-btn" onclick="openGallery('이예준')">이미지 보기</button>
             </div>
             <div class="definition-text">
                 양다리다. 개쓰레기;;
             </div>    
         </div>
 
-        <div class="definition">    
-            <div class="definition-text">
-                신승우
+        <div class="definition">
+            <div class="name-header">
+                <div class="definition-text"><strong>신승우</strong></div>
+                <button class="image-btn" onclick="openGallery('신승우')">이미지 보기</button>
             </div>
             <div class="definition-text">
                 공부 안한다. 같이 학원가는데 가방 두고와서 수업때 멍때리는것 보고 정떨어졌다고 한다. 나름 정상인이다.
             </div>    
         </div>
 
-        <div class="definition">    
-            <div class="definition-text">
-                노지원
+        <div class="definition">
+            <div class="name-header">
+                <div class="definition-text"><strong>노지원</strong></div>
+                <button class="image-btn" onclick="openGallery('노지원')">이미지 보기</button>
             </div>
             <div class="definition-text">
                 용인 외대부고 이다. 시간 매우 바쁘다고 한다. 디엠 답장할 시간도 없길래 김하연이 연락하기 싫다 했다.
             </div>    
         </div>
 
-        <div class="definition">    
-            <div class="definition-text">
-                이우현
+        <div class="definition">
+            <div class="name-header">
+                <div class="definition-text"><strong>이우현</strong></div>
+                <button class="image-btn" onclick="openGallery('이우현')">이미지 보기</button>
             </div>
             <div class="definition-text">
                 ㄹㅇ 폐급 08이다. 
+            </div>
             <div class="definition-text">토요일 : 물맞아 몸살에 걸림.</div>
             <div class="definition-text">일요일 : 서운한거 말함, 친구가 이우연이 식었다고 전달함.</div>
             <div class="definition-text">월요일 : 시험보고 집와서 김하연이 이우연 잡음</div>
             <div class="definition-text">화요일 : 김하연이 새벽 국어 벼락치기 도중 새벽 3시에 이우연한테 걍만나지말자 니싫어 시전받음 (국어 시험범위가 이별의정한이었음 레전드)</div>
             <div class="definition-text"> -> 국어 3등급 띄운 장본인</div>
-            </div>    
         </div>
 
         <div class="dict-source" style="margin-top: 40px; text-align: center; border-top: none;">본 사전의 저작권은 이지훈에게 없지만, 무단 복제는 자제 부탁합니다.</div>
     </div>
 
-</body></html>
+    <!-- 이미지 갤러리 모달 -->
+    <div id="imageModal" class="modal">
+        <span class="close-modal" onclick="closeGallery()">&times;</span>
+        <div class="modal-content">
+            <h2 class="modal-title" id="modalTitle"></h2>
+            <div class="image-gallery" id="imageGallery"></div>
+        </div>
+    </div>
+
+    <!-- 큰 이미지 뷰어 -->
+    <div id="imageViewer" class="image-viewer">
+        <span class="close-viewer" onclick="closeViewer()">&times;</span>
+        <span class="nav-btn prev-btn" onclick="changeImage(-1)">&#10094;</span>
+        <div class="viewer-content">
+            <img id="viewerImage" src="" alt="">
+        </div>
+        <span class="nav-btn next-btn" onclick="changeImage(1)">&#10095;</span>
+    </div>
+
+    <script>
+        // 각 사람별 이미지 URL 설정 (GitHub Raw URL로 변경하세요)
+        const imageData = {
+            '강준수': [
+                'https://raw.githubusercontent.com/사용자명/저장소명/main/images/강준수1.jpg',
+                'https://raw.githubusercontent.com/사용자명/저장소명/main/images/강준수2.jpg',
+                'https://raw.githubusercontent.com/사용자명/저장소명/main/images/강준수3.jpg'
+            ],
+            '고재성': [
+                'https://raw.githubusercontent.com/사용자명/저장소명/main/images/고재성1.jpg',
+                'https://raw.githubusercontent.com/사용자명/저장소명/main/images/고재성2.jpg'
+            ],
+            '유시연': [
+                'https://raw.githubusercontent.com/사용자명/저장소명/main/images/유시연1.jpg'
+            ],
+            '정민수': [
+                'https://raw.githubusercontent.com/사용자명/저장소명/main/images/정민수1.jpg',
+                'https://raw.githubusercontent.com/사용자명/저장소명/main/images/정민수2.jpg'
+            ],
+            '홍민준': [
+                'https://raw.githubusercontent.com/사용자명/저장소명/main/images/홍민준1.jpg'
+            ],
+            '김규원': [
+                'https://raw.githubusercontent.com/사용자명/저장소명/main/images/김규원1.jpg'
+            ],
+            '김민석': [
+                'https://raw.githubusercontent.com/사용자명/저장소명/main/images/김민석1.jpg'
+            ],
+            '이예준': [
+                'https://raw.githubusercontent.com/사용자명/저장소명/main/images/이예준1.jpg'
+            ],
+            '신승우': [
+                'https://raw.githubusercontent.com/사용자명/저장소명/main/images/신승우1.jpg',
+                'https://raw.githubusercontent.com/사용자명/저장소명/main/images/신승우2.jpg'
+            ],
+            '노지원': [
+                'https://raw.githubusercontent.com/사용자명/저장소명/main/images/노지원1.jpg'
+            ],
+            '이우현': [
+                'https://raw.githubusercontent.com/사용자명/저장소명/main/images/이우현1.jpg',
+                'https://raw.githubusercontent.com/사용자명/저장소명/main/images/이우현2.jpg',
+                'https://raw.githubusercontent.com/사용자명/저장소명/main/images/이우현3.jpg'
+            ]
+        };
+
+        let currentImages = [];
+        let currentImageIndex = 0;
+
+        // 갤러리 모달 열기
+        function openGallery(name) {
+            const modal = document.getElementById('imageModal');
+            const title = document.getElementById('modalTitle');
+            const gallery = document.getElementById('imageGallery');
+            
+            title.textContent = name + ' 이미지';
+            gallery.innerHTML = '';
+            
+            currentImages = imageData[name] || [];
+            
+            currentImages.forEach((url, index) => {
+                const item = document.createElement('div');
+                item.className = 'gallery-item';
+                item.onclick = () => openViewer(index);
+                
+                const img = document.createElement('img');
+                img.src = url;
+                img.alt = name;
+                
+                item.appendChild(img);
+                gallery.appendChild(item);
+            });
+            
+            modal.style.display = 'block';
+        }
+
+        // 갤러리 모달 닫기
+        function closeGallery() {
+            document.getElementById('imageModal').style.display = 'none';
+        }
+
+        // 큰 이미지 뷰어 열기
+        function openViewer(index) {
+            currentImageIndex = index;
+            const viewer = document.getElementById('imageViewer');
+            const viewerImage = document.getElementById('viewerImage');
+            
+            viewerImage.src = currentImages[currentImageIndex];
+            viewer.style.display = 'block';
+        }
+
+        // 큰 이미지 뷰어 닫기
+        function closeViewer() {
+            document.getElementById('imageViewer').style.display = 'none';
+        }
+
+        // 이미지 변경 (이전/다음)
+        function changeImage(direction) {
+            currentImageIndex += direction;
+            
+            if (currentImageIndex < 0) {
+                currentImageIndex = currentImages.length - 1;
+            } else if (currentImageIndex >= currentImages.length) {
+                currentImageIndex = 0;
+            }
+            
+            document.getElementById('viewerImage').src = currentImages[currentImageIndex];
+        }
+
+        // 모달 외부 클릭 시 닫기
+        window.onclick = function(event) {
+            const modal = document.getElementById('imageModal');
+            const viewer = document.getElementById('imageViewer');
+            
+            if (event.target == modal) {
+                closeGallery();
+            }
+            if (event.target == viewer) {
+                closeViewer();
+            }
+        }
+
+        // 키보드 단축키
+        document.addEventListener('keydown', function(event) {
+            const viewer = document.getElementById('imageViewer');
+            if (viewer.style.display === 'block') {
+                if (event.key === 'ArrowLeft') {
+                    changeImage(-1);
+                } else if (event.key === 'ArrowRight') {
+                    changeImage(1);
+                } else if (event.key === 'Escape') {
+                    closeViewer();
+                }
+            }
+        });
+    </script>
+</body>
+</html>
